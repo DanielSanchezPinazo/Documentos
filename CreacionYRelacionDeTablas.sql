@@ -2,7 +2,7 @@ CREATE DATABASE cursoStoredProcedures;
 USE cursoStoredProcedures;
 
 CREATE TABLE persona(
-	`id_persona` BIGINT(20) NOT NULL AUTO_INCREMENT,
+    `id_persona` BIGINT(20) NOT NULL AUTO_INCREMENT,
     `nombre` VARCHAR(100) NOT NULL,
     `apellido` VARCHAR(100) NOT NULL,
     `telefono` BIGINT(20) NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE persona(
 ) ENGINE = InnoDB;
 
 CREATE TABLE tarea(
-	`idtarea` BIGINT(20) NOT NULL AUTO_INCREMENT,
+    `idtarea` BIGINT(20) NOT NULL AUTO_INCREMENT,
     `nombretarea` VARCHAR(100) NOT NULL,
     `descripcion` TEXT NOT NULL,
     `fecha_inicio` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, #Establece por defecto la fecha y hora actual
