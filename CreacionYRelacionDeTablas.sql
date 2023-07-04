@@ -86,6 +86,11 @@ SELECT * FROM persona WHERE DAY(datecreated) = 30;
 SELECT * FROM persona WHERE DAY(datecreated) = 30 AND MONTH(datecreated) = 05 AND YEAR(datecreated) = 2023;
 -- OR
 SELECT * FROM persona WHERE apellido = 'Sanchez' OR telefono = 648215695;
+
+-- UPPER Y LOWER
+SELECT * FROM persona WHERE LOWER(apellido) = 'sanchez'; -- Transforma el valor de cada apellido en minúsculas para compararlo
+SELECT * FROM persona WHERE UPPER(apellido) = 'SANCHEZ'; -- Transforma el valor de cada apellido en mayúsculas para compararlo
+
 -- IS NULL
 SELECT * FROM tarea WHERE fecha_fin IS NULL;
 SELECT * FROM tarea WHERE fecha_fin IS NOT NULL;
