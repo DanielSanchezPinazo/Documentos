@@ -61,20 +61,25 @@ INSERT tarea(nombretarea, descripcion, fecha_inicio, persona_id, status) VALUES(
 #Mostramos selecciones de tabla
 SELECT * FROM persona;
 SELECT id_persona, nomebre, apellido FROM persona;
+
 -- WHERE
 SELECT * FROM person WHERE id_persona = 1;
 SELECT * FROM person WHERE apellido = 'Sanchez';
+
 -- COUNT
 SELECT COUNT(*) AS total FROM persona;
 SELECT COUNT(*) AS total FROM persona WHERE apellido = 'Sanchez';
+
 -- ORDER BY
 SELECT * FROM persona ORDER BY id_persona;
 SELECT * FROM persona ORDER BY nombre DESC; -- ASC
 SELECT * FROM persona WHERE STATUS = 1 ORDER BY nombre;
+
 -- != , > , < 
 SELECT * FROM persona WHERE STATUS != 0;
 SELECT * FROM persona WHERE datecreated > '2022-10-31';
 SELECT * FROM persona WHERE datecreated < '2023-06-29' AND datecreated > '2023-05-29';
+
 -- BETWEEN, LIKE, DAY, MONTH, YEAR
 SELECT * FROM persona WHERE datecreated BETWEEN '2023-05-29' AND '2023-05-31';
 SELECT * FROM persona WHERE datecreated LIKE '2023-05-30%';
@@ -84,6 +89,7 @@ SELECT * FROM persona WHERE apellido LIKE '%ez'; -- Busca de dcha a izqda
 SELECT * FROM persona WHERE apellido LIKE '%an%'; -- Busca por TODO el campo, donde hay "an" en cualquier parte, CENTRO, PRINCIPIO O FINAL
 SELECT * FROM persona WHERE DAY(datecreated) = 30;
 SELECT * FROM persona WHERE DAY(datecreated) = 30 AND MONTH(datecreated) = 05 AND YEAR(datecreated) = 2023;
+
 -- OR
 SELECT * FROM persona WHERE apellido = 'Sanchez' OR telefono = 648215695;
 
@@ -94,13 +100,16 @@ SELECT * FROM persona WHERE UPPER(apellido) = 'SANCHEZ'; -- Transforma el valor 
 -- IS NULL
 SELECT * FROM tarea WHERE fecha_fin IS NULL;
 SELECT * FROM tarea WHERE fecha_fin IS NOT NULL;
+
 -- IN (para buscar más de una cadena en un campo)
 SELECT * FROM persona WHERE apellido IN('Sanchez', 'Gonzalez');
 SELECT * FROM persona WHERE telefono IN(689624531, 648215625);
+
 -- LIMIT (duvuelve la cantidad de resultados que le marcamos / siempre es la última sentencia)
 SELECT * FROM persona LIMIT 3;
 SELECT * FROM persona WHERE STATUS != 0 ORDER BY id_persona DESC LIMIT 2;
 SELECT * FROM persona LIMIT 0,3; -- Muestra los 3 primeros registros a partir de la posición 0(incluida), que es el primer registro
+
 -- INNER JOIN
 SELECT pr.id_persona, pr.nombre, pr.apellido, pr.telefono, tr.idtarea, tr.nombretarea, tr.fecha_inicio, tr.fecha_fin, tr.status
 FROM persona pr INNER JOIN tarea tr 
