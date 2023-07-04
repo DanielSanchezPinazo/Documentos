@@ -93,7 +93,7 @@ SELECT * FROM persona WHERE DAY(datecreated) = 30 AND MONTH(datecreated) = 05 AN
 -- OR
 SELECT * FROM persona WHERE apellido = 'Sanchez' OR telefono = 648215695;
 
--- UPPER Y LOWER
+-- UPPER Y LOWER (SQL es CASE SENSITIVE)
 SELECT * FROM persona WHERE LOWER(apellido) = 'sanchez'; -- Transforma el valor de cada apellido en minúsculas para compararlo
 SELECT * FROM persona WHERE UPPER(apellido) LIKE = 'SANC'; -- Transforma el valor de cada apellido en mayúsculas para compararlo
 
