@@ -114,6 +114,10 @@ SELECT * FROM persona LIMIT 0,3; -- Muestra los 3 primeros registros a partir de
 -- LENGTH (muestra la longitud del campo que indiquemos)
 SELECT nombre, length(nombre) FROM persona;
 
+-- LEFT, RIGHT (muestra las tres primeras o últimas letras del nombre)
+SELECT nombre, left(nombre, 3) FROM persona;
+SELECT nombre, right(nombre, 3) FROM persona;
+
 -- INNER JOIN
 SELECT pr.id_persona, pr.nombre, pr.apellido, pr.telefono, tr.idtarea, tr.nombretarea, tr.fecha_inicio, tr.fecha_fin, tr.status
 FROM persona pr INNER JOIN tarea tr 
