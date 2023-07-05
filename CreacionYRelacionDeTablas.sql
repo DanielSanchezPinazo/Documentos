@@ -71,11 +71,15 @@ SELECT COUNT(*) AS total FROM persona;
 SELECT COUNT(*) AS total FROM persona WHERE apellido = 'Sanchez';
 
 -- CONCAT
-SELECT *, concat(nombre, apellido) as nombre_completo
+SELECT *, concat(nombre, apellido) AS nombre_completo
 FROM persona;
 
+-- AGE
+SELECT AGE(fecha_fin, fecha_inicio) AS duracion
+FROM tarea 
+
 -- DATE_PART (selecciona sólo una parte de la fecha)
-SELECT *, DATE_PART('month', fecha_inicio) - DATE_PART('month', fecha_fin) as meses_duracion
+SELECT *, DATE_PART('month', fecha_inicio) - DATE_PART('month', fecha_fin) AS meses_duracion
 FROM tarea;
 
 -- ORDER BY
@@ -99,14 +103,15 @@ SELECT * FROM persona WHERE apellido LIKE '%an%'; -- Busca por TODO el campo, do
 SELECT * FROM persona WHERE DAY(datecreated) = 30;
 SELECT * FROM persona WHERE DAY(datecreated) = 30 AND MONTH(datecreated) = 05 AND YEAR(datecreated) = 2023;
 
--- OR
+-- OR / AND
 SELECT * FROM persona WHERE apellido = 'Sanchez' OR telefono = 648215695;
+SELECT * FROM persona WHERE apellido = 'Sanchez' AND telefono LIKE 66________;
 
 -- UPPER Y LOWER (SQL es CASE SENSITIVE)
 SELECT * FROM persona WHERE LOWER(apellido) = 'sanchez'; -- Transforma el valor de cada apellido en minúsculas para compararlo
 SELECT * FROM persona WHERE UPPER(apellido) LIKE = 'SANC'; -- Transforma el valor de cada apellido en mayúsculas para compararlo
 
--- IS NULL
+-- IS NULL / NOT  NULL
 SELECT * FROM tarea WHERE fecha_fin IS NULL;
 SELECT * FROM tarea WHERE fecha_fin IS NOT NULL;
 
