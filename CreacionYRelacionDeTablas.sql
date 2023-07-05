@@ -81,7 +81,6 @@ SELECT telefono::VARCHAR(9)) FROM persona; -- Hace lo mismo que el de arriba en 
 SELECT CAST(telefono AS BIGINT(20)) FROM persona;
 SELECT CAST('2017-08-25' AS datetime);
 
-
 -- AGE
 SELECT AGE(fecha_fin, fecha_inicio) AS duracion
 FROM tarea 
@@ -89,6 +88,10 @@ FROM tarea
 -- DATE_PART (selecciona sólo una parte de la fecha)
 SELECT *, DATE_PART('month', fecha_inicio) - DATE_PART('month', fecha_fin) AS meses_duracion
 FROM tarea;
+
+--TO_DATE
+SELECT to_date(CAST(fecha_inicio AS VARCHAR), 'yyyy-mm-dd') FROM tarea; 
+-- Esto realmente es absurdo porque transforma la fecha en VARCHAR para después devolverlo a fecha en POSTGRESQL
 
 -- ORDER BY
 SELECT * FROM persona ORDER BY id_persona;
