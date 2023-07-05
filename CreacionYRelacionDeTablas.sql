@@ -111,6 +111,9 @@ SELECT * FROM persona LIMIT 3;
 SELECT * FROM persona WHERE STATUS != 0 ORDER BY id_persona DESC LIMIT 2;
 SELECT * FROM persona LIMIT 0,3; -- Muestra los 3 primeros registros a partir de la posición 0(incluida), que es el primer registro
 
+-- LENGTH (muestra la longitud del campo que indiquemos)
+SELECT nombre, length(nombre) FROM persona;
+
 -- INNER JOIN
 SELECT pr.id_persona, pr.nombre, pr.apellido, pr.telefono, tr.idtarea, tr.nombretarea, tr.fecha_inicio, tr.fecha_fin, tr.status
 FROM persona pr INNER JOIN tarea tr 
