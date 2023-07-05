@@ -70,6 +70,10 @@ SELECT * FROM person WHERE apellido = 'Sanchez';
 SELECT COUNT(*) AS total FROM persona;
 SELECT COUNT(*) AS total FROM persona WHERE apellido = 'Sanchez';
 
+-- CONCAT
+SELECT *, concat(nombre, apellido) as nombre_completo
+FROM persona;
+
 -- ORDER BY
 SELECT * FROM persona ORDER BY id_persona;
 SELECT * FROM persona ORDER BY nombre DESC; -- ASC
