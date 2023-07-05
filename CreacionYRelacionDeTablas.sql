@@ -81,13 +81,21 @@ SELECT telefono::VARCHAR(9)) FROM persona; -- Hace lo mismo que el de arriba en 
 SELECT CAST(telefono AS BIGINT(20)) FROM persona;
 SELECT CAST('2017-08-25' AS datetime);
 
--- AGE
-SELECT AGE(fecha_fin, fecha_inicio) AS duracion
-FROM tarea 
+-- CONVERT (igual que CAST)
+SELECT CONVERT(telefono, VARCHAR) FROM persona;
 
--- DATE_PART (selecciona sólo una parte de la fecha)
-SELECT *, DATE_PART('month', fecha_inicio) - DATE_PART('month', fecha_fin) AS meses_duracion
+-- AGE (devuelve la diferencia entre 2 fechas - en POSTGRESQL)
+SELECT AGE(fecha_fin, fecha_inicio) AS duracion
 FROM tarea;
+
+-- DATEDIFF (devuelve la diferencia entre 2 fechas, al contrario que en POSTGRESQL sí tiene en cuenta las fechas completas- en MSSMS)
+SELECT *, DATEDIFF(YEAR, fecha_inicio, fecha_fin) AS duracion FROM tarea;
+SELECT *, DATEDIFF(MONTH, fecha_inicio, fecha_fin) AS duracion FROM tarea;
+SELECT *, DATEDIFF(DAY, fecha_inicio, fecha_fin) AS duracion FROM tarea;
+    
+-- DATE_PART / DATEPART (selecciona sólo una parte de la fecha)
+SELECT *, DATE_PART('month', fecha_inicio) - DATE_PART('month', fecha_fin) AS meses_duracion FROM tarea;-- en POSTGRESQL
+SELECT *, DATEPART('year', fecha_inicio) - DATEPART('year', fecha_fin) AS anos_duracion FROM tarea;-- en MSSMS
 
 --TO_DATE
 SELECT to_date(CAST(fecha_inicio AS VARCHAR), 'yyyy-mm-dd') FROM tarea; 
