@@ -74,11 +74,13 @@ SELECT COUNT(*) AS total FROM persona WHERE apellido = 'Sanchez';
 SELECT *, concat(nombre, apellido) AS nombre_completo
 FROM persona;
 
--- CAST
+-- CAST, ::
 SELECT CAST(telefono AS VARCHAR) FROM persona;
 SELECT CAST(telefono AS VARCHAR(9)) FROM persona; -- Hace lo mismo que el de arriba
+SELECT telefono::VARCHAR(9)) FROM persona; -- Hace lo mismo que el de arriba en POSTGRESQL
 SELECT CAST(telefono AS BIGINT(20)) FROM persona;
 SELECT CAST('2017-08-25' AS datetime);
+
 
 -- AGE
 SELECT AGE(fecha_fin, fecha_inicio) AS duracion
