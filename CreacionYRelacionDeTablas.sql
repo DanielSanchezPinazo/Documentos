@@ -121,12 +121,6 @@ SELECT nombre, RIGHT(nombre, 3) FROM persona;
 -- REVERSE (muestra el campo invertido)
 SELECT nombre, REVERSE(nombre) FROM persona; 
 
--- INNER JOIN
-SELECT pr.id_persona, pr.nombre, pr.apellido, pr.telefono, tr.idtarea, tr.nombretarea, tr.fecha_inicio, tr.fecha_fin, tr.status
-FROM persona pr INNER JOIN tarea tr 
-ON pr.id_persona = tr.persona_id
-/* WHERE tr.status = 'Finalizado'*/;
-
 #Actualizar registros de una tabla
 UPDATE persona SET nombre = 'Carlos' WHERE id_persona = 1;
 UPDATE persona SET nombre = 'Abel' WHERE id_persona = 1;
@@ -136,3 +130,9 @@ UPDATE persona SET status = 1 WHERE id_persona IN(3, 4);
 #Borra el registro de la tabla "persona" cuyo id_persona es 1
 DELETE FROM `persona` WHERE `persona`.`id_persona` = 1;
 DELETE FROM persona WHERE persona.id_persona = 1;
+
+-- INNER JOIN
+SELECT pr.id_persona, pr.nombre, pr.apellido, pr.telefono, tr.idtarea, tr.nombretarea, tr.fecha_inicio, tr.fecha_fin, tr.status
+FROM persona pr INNER JOIN tarea tr 
+ON pr.id_persona = tr.persona_id
+/* WHERE tr.status = 'Finalizado'*/;
