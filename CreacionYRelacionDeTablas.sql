@@ -74,6 +74,10 @@ SELECT COUNT(*) AS total FROM persona WHERE apellido = 'Sanchez';
 SELECT *, concat(nombre, apellido) as nombre_completo
 FROM persona;
 
+-- DATE_PART (selecciona sólo una parte de la fecha)
+SELECT *, DATE_PART('month', fecha_inicio) - DATE_PART('month', fecha_fin) as meses_duracion
+FROM tarea;
+
 -- ORDER BY
 SELECT * FROM persona ORDER BY id_persona;
 SELECT * FROM persona ORDER BY nombre DESC; -- ASC
