@@ -77,7 +77,7 @@ FROM persona;
 -- ORDER BY
 SELECT * FROM persona ORDER BY id_persona;
 SELECT * FROM persona ORDER BY nombre DESC; -- ASC
-SELECT * FROM persona WHERE STATUS = 1 ORDER BY nombre;
+SELECT * FROM persona WHERE STATUS = 1 ORDER BY nombre, apellido;
 
 -- != , > , < 
 SELECT * FROM persona WHERE STATUS != 0;
