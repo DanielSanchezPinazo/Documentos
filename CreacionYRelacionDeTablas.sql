@@ -168,3 +168,17 @@ SELECT pr.id_persona, pr.nombre, pr.apellido, pr.telefono, tr.idtarea, tr.nombre
 FROM persona pr INNER JOIN tarea tr 
 ON pr.id_persona = tr.persona_id
 /* WHERE tr.status = 'Finalizado'*/;
+
+-- LEFT JOIN
+SELECT pr.id_persona, pr.nombre, pr.apellido, pr.telefono, tr.idtarea, tr.nombretarea, tr.fecha_inicio, tr.fecha_fin, tr.status
+FROM persona pr LEFT JOIN tarea tr 
+ON pr.id_persona = tr.persona_id
+/* WHERE tr.status = 'Finalizado'*/;
+
+-- RIGHT JOIN
+SELECT pr.id_persona, pr.nombre, pr.apellido, pr.telefono, tr.idtarea, tr.nombretarea, tr.fecha_inicio, tr.fecha_fin, tr.status
+FROM persona pr RIGHT JOIN tarea tr 
+ON pr.id_persona = tr.persona_id
+/* WHERE tr.status = 'Finalizado'*/;
+
+
