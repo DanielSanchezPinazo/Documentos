@@ -181,4 +181,8 @@ FROM persona pr RIGHT JOIN tarea tr
 ON pr.id_persona = tr.persona_id
 /* WHERE tr.status = 'Finalizado'*/;
 
-
+-- FULL JOIN
+SELECT pr.id_persona, pr.nombre, pr.apellido, pr.telefono, tr.idtarea, tr.nombretarea, tr.fecha_inicio, tr.fecha_fin, tr.status
+FROM persona pr FULL JOIN tarea tr 
+ON pr.id_persona = tr.persona_id
+/* WHERE tr.status = 'Finalizado'*/;
