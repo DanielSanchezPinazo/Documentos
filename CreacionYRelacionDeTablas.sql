@@ -33,6 +33,7 @@ ALTER TABLE tarea CHANGE `personaid` `persona_id` BIGINT(20) NOT NULL;
 
 # Borra la realcion entre las tablas.
 ALTER TABLE tarea DROP FOREIGN KEY tarea_persona_fk;
+ALTER TABLE tarea DROP `status`;
 
 # Modificamos el campo `status` para que guarde una especia de booleano que es 0/1 para indicar si la persona esta eliminada/no
 ALTER TABLE persona MODIFY COLUMN `status` INT(1);
@@ -153,15 +154,17 @@ SELECT nombre, RIGHT(nombre, 3) FROM persona;
 -- REVERSE (muestra el campo invertido)
 SELECT nombre, REVERSE(nombre) FROM persona; 
 
-#Actualizar registros de una tabla
+# Actualizar registros de una tabla
 UPDATE persona SET nombre = 'Carlos' WHERE id_persona = 1;
 UPDATE persona SET nombre = 'Abel' WHERE id_persona = 1;
 UPDATE persona SET status = 0 WHERE id_persona IN(3, 4);
 UPDATE persona SET status = 1 WHERE id_persona IN(3, 4);
 
-#Borra el registro de la tabla "persona" cuyo id_persona es 1
+# Borra el registro de la tabla "persona" cuyo id_persona es 1
 DELETE FROM `persona` WHERE `persona`.`id_persona` = 1;
 DELETE FROM persona WHERE persona.id_persona = 1;
+# Borra una columna
+
 
 -- INNER JOIN
 SELECT pr.id_persona, pr.nombre, pr.apellido, pr.telefono, tr.idtarea, tr.nombretarea, tr.fecha_inicio, tr.fecha_fin, tr.status
