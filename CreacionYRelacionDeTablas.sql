@@ -192,7 +192,7 @@ SELECT *
 FROM persona pr INNER JOIN tarea tr
 ON pr.id_persona = tr.persona_id
 LEFT JOIN detalletarea dt
-on pr.idtarea = dt.idtarea;
+ON pr.idtarea = dt.idtarea;
 
 
 
