@@ -186,3 +186,13 @@ SELECT pr.id_persona, pr.nombre, pr.apellido, pr.telefono, tr.idtarea, tr.nombre
 FROM persona pr FULL JOIN tarea tr 
 ON pr.id_persona = tr.persona_id
 /* WHERE tr.status = 'Finalizado'*/;
+
+-- COMPLEX JOINS (nos inventamos otra tabla)
+SELECT *
+FROM persona pr INNER JOIN tarea tr
+ON pr.id_persona = tr.persona_id
+LEFT JOIN detalletarea dt
+on pr.idtarea = dt.idtarea;
+
+
+
