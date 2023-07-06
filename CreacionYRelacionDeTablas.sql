@@ -194,5 +194,14 @@ ON pr.id_persona = tr.persona_id
 LEFT JOIN detalletarea dt
 ON pr.idtarea = dt.idtarea;
 
+-- CROSS JOIN (una cada fila de "persona" con cada una de las filas de "tarea")
+SELECT *
+FROM persona
+CROSS JOIN tarea;
+
+
+
+
+
 
 
