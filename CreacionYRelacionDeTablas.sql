@@ -81,7 +81,7 @@ SELECT telefono::VARCHAR(9)) FROM persona; -- Hace lo mismo que el de arriba en 
 SELECT CAST(telefono AS BIGINT(20)) FROM persona;
 SELECT CAST('2017-08-25' AS datetime);
 
--- CONVERT (igual que CAST)
+-- CONVERT (igual que CAST pero sólo en MSSMS)
 SELECT CONVERT(telefono, VARCHAR) FROM persona;
 
 -- AGE (devuelve la diferencia entre 2 fechas - en POSTGRESQL)
