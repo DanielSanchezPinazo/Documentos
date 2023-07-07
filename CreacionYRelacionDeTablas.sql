@@ -204,6 +204,49 @@ SELECT *
 FROM persona
 CROSS JOIN tarea;
 
+# NORMALIZAZCIÓN
+-- 1 FN (que no haya registros/tuplas/filas repetidas)
+SELECT COUNT(*) FROM persona;
+-- y el resultado que da se compara con el siguiente:
+SELECT COUNT(*) FROM (
+    SELECT DISTINCT * FROM persona;
+) as alias; -- hay que poner un alias por fuerza
+-- si el primer COUNT es mayor es que hay filas repetidas y hay que eliminarlas
+
+-- 2FN (Todos los atributos que no son clave principal deben depender únicamente de la clave principal - dividir en tablas independientes)
+SELECT campo1,
+       campo2,
+       campo3,
+       campo4
+INTO tabla_temporal
+FROM tabla_original;
+
+SELECT DISTINCT *
+INTO nueva_tabla    
+FROM tabla_temporal;
+
+-- borramos todas las columnas que hemos copiado en la nueva tabla menos la clave primaria que aquí será foránea
+ALTER TABLE tabla_original
+DROP COLUMN campo2,
+            campo3,
+            campo4;
+
+-- borramos la tabla temporal
+DROP TABLE tabla_temporal;
+
+/* 3FN (si no existe ninguna dependencia funcional transitiva en los atributos que no son clave - Sean X, Y, Z tres atributos (o grupos de atributos)
+de la misma entidad. Si Y depende funcionalmente de X y Z de Y, pero X no depende funcionalmente de Y, se dice entonces que Z depende transitivamente de X.
+Simbólicamente sería: X → Y → Z entonces X → Z) */
+
+
+
+
+
+
+
+
+
+
 
 
 
