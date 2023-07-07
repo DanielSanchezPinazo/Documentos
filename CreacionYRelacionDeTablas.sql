@@ -33,7 +33,6 @@ ALTER TABLE tarea CHANGE `personaid` `persona_id` BIGINT(20) NOT NULL;
 
 # Borra la realcion entre las tablas.
 ALTER TABLE tarea DROP FOREIGN KEY tarea_persona_fk;
-ALTER TABLE tarea DROP `status`;
 
 # Modificamos el campo `status` para que guarde una especia de booleano que es 0/1 para indicar si la persona esta eliminada/no
 ALTER TABLE persona MODIFY COLUMN `status` INT(1);
@@ -89,7 +88,7 @@ SELECT CONVERT(telefono, VARCHAR) FROM persona;
 SELECT AGE(fecha_fin, fecha_inicio) AS duracion
 FROM tarea;
 
--- DATEDIFF (devuelve la diferencia entre 2 fechas, al contrario que en POSTGRESQL sí tiene en cuenta las fechas completas- en MSSMS)
+-- DATEDIFF (devuelve la diferencia entre 2 fechas, al contrario que en POSTGRESQL sí tiene en cuenta las fechas completas - en MSSMS)
 SELECT *, DATEDIFF(YEAR, fecha_inicio, fecha_fin) AS duracion FROM tarea;
 SELECT *, DATEDIFF(MONTH, fecha_inicio, fecha_fin) AS duracion FROM tarea;
 SELECT *, DATEDIFF(DAY, fecha_inicio, fecha_fin) AS duracion FROM tarea;
@@ -163,8 +162,10 @@ UPDATE persona SET status = 1 WHERE id_persona IN(3, 4);
 # Borra el registro de la tabla "persona" cuyo id_persona es 1
 DELETE FROM `persona` WHERE `persona`.`id_persona` = 1;
 DELETE FROM persona WHERE persona.id_persona = 1;
-# Borra una columna
 
+# Borra una columna
+ALTER TABLE tarea DROP `status`;
+ALTER TABLE tarea DROP COLUMN `status`; --  en MSSMS)
 
 -- INNER JOIN
 SELECT pr.id_persona, pr.nombre, pr.apellido, pr.telefono, tr.idtarea, tr.nombretarea, tr.fecha_inicio, tr.fecha_fin, tr.status
