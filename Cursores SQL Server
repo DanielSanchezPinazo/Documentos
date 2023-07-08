@@ -2,12 +2,12 @@
 
 DECLARE @Variable AS varchar(400);
 
-# Declaración:
+# Declaración del cursor:
 
 DECLARE cursor CURSOR FOR SELECT campos FROM tabla;
 DECLARE cursor CURSOR READ_ONLY FOR SELECT campos FROM tabla; -- Además de READ_ONLY pueden ponerse otras instrucciones
 
-# Apertura:
+# Apertura del cursor:
 
 OPEN cursor;
 
@@ -18,7 +18,7 @@ FETCH NEXT FROM cursor INTO @Variable
 -- Tomará la siguiente fila de resultados del cursor y lo alojará en la variable @Variable. Deberán crearse tantas variables como columnas se definan en la
 declaración del cursor y las mismas deberán ubicarse en el mismo orden que se encuentran definidas las columnas en la sentencia SELECT de la declaración.
 
-# Cierre:
+# Cierre del cursor:
 
 CLOSE cursor;
 
