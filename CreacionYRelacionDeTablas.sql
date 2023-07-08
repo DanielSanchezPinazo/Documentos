@@ -238,18 +238,4 @@ DROP TABLE tabla_temporal;
 de la misma entidad. Si Y depende funcionalmente de X y Z de Y, pero X no depende funcionalmente de Y, se dice entonces que Z depende transitivamente de X.
 Simbólicamente sería: X → Y → Z entonces X → Z) */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- Se soluciona igual que el paso anterior.
