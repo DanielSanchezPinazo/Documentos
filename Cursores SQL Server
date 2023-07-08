@@ -1,0 +1,8 @@
+# Declaración
+
+DECLARE cursor CURSOR FOR SELECT campos FROM tabla;
+
+# Apertura
+
+OPEN cursor;
+
