@@ -26,5 +26,7 @@ CLOSE cursor;
 
 DEALLOCATE cursor;
 
+# @@FETCH_STATUS
+Es una variable interna que tomará el valor 0 si la lectura del registro ha sido correcta.
 
 
