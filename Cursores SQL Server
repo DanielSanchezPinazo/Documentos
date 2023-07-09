@@ -13,7 +13,7 @@ DECLARE cursor CURSOR READ_ONLY FOR SELECT campos FROM tabla; -- Además de READ
 El cursor se puede declarar de varias formas, si no se especifíca, por defecto es dinámica (DECLARE cursor CURSOR DYNAMIC FOR SELECT...), pero puede indicarse
 también que sea:
 
-- Estática (DECLARE ProdInfo CURSOR STATIC FOR SELECT...) la actualización (tanto como las inserciones y eliminaciones de registros) externas serán ignorada
+- Estática (DECLARE ProdInfo CURSOR STATIC FOR SELECT...) la actualización (tanto como las inserciones y eliminaciones de registros) externa serán ignorada
     hasta que el cursor sea reabierto.
 - Keyset (DECLARE ProdInfo CURSOR KEYSET FOR SELECT...) permitirá al cursor detectar las actualizaciones y eliminaciones, pero no registros insertados.
 - FAST_FORWARD (DECLARE ProdInfo CURSOR FAST_FORWARD FOR SELECT...) creará un cursor de solo avance y solo lectura.
