@@ -2,10 +2,25 @@
 
 DECLARE @Variable AS varchar(400);
 
+Deberán crearse tantas variables como columnas se definan en la
+declaración del cursor y las mismas deberán ubicarse en el mismo orden que se encuentran definidas las columnas en la sentencia SELECT de la declaración.
+
 # Declaración del cursor:
 
 DECLARE cursor CURSOR FOR SELECT campos FROM tabla;
-DECLARE cursor CURSOR READ_ONLY FOR SELECT campos FROM tabla; -- Además de READ_ONLY pueden ponerse otras instrucciones
+DECLARE cursor CURSOR READ_ONLY FOR SELECT campos FROM tabla; -- Además de READ_ONLY pueden ponerse otras instrucciones.
+
+El cursor se puede declarar de varias formas, si no se especifíca, por defecto es dinámica (DECLARE cursor CURSOR DYNAMIC FOR SELECT...), pero puede indicarse
+también que sea:
+
+- Estática (DECLARE ProdInfo CURSOR STATIC FOR SELECT...) la actualización (tanto como las inserciones y eliminaciones de registros) externas serán ignorada
+    hasta que el cursor sea reabierto.
+- Keyset (DECLARE ProdInfo CURSOR KEYSET FOR SELECT...) permitirá al cursor detectar las actualizaciones y eliminaciones, pero no registros insertados.
+- FAST_FORWARD (DECLARE ProdInfo CURSOR FAST_FORWARD FOR SELECT...) creará un cursor de solo avance y solo lectura.
+
+Para que todas estas opciones de desplazamiento se encuentren disponibles el cursor deberá definirse como SCROLL, que es la opción por defecto, por lo que
+no es necesario definirlo explícitamente. Pero también puede definirse el cursor como FORWARD_ONLY, que sólo permitirá efectuar operaciones FETCH NEXT, pero
+a cambio nos bridará una mucho mejor performance que la opción SCROLL.
 
 # Apertura del cursor:
 
@@ -13,10 +28,16 @@ OPEN cursor;
 
 # Recorrido y acceso a datos:
 
-FETCH NEXT FROM cursor INTO @Variable
+FETCH NEXT FROM cursor INTO @Variable (Tomará la siguiente fila de resultados del cursor y lo alojará en la variable @Variable)
 
--- Tomará la siguiente fila de resultados del cursor y lo alojará en la variable @Variable. Deberán crearse tantas variables como columnas se definan en la
-declaración del cursor y las mismas deberán ubicarse en el mismo orden que se encuentran definidas las columnas en la sentencia SELECT de la declaración.
+La sentencia FETCH puede ir acompañada de:
+
+- NEXT: accederá a la siguiente fila de resultados del cursor.
+- FIRST: permitirá acceder a la primera fila.
+- PRIOR: irá a la fila previa de resultados del cursor.
+- LAST: accederá a la última fila.
+- ABSOLUTE y RELATIVE: permitirán avanzar o retroceder una cantidad determinada de registros (en forma absoluta o relativa al registro actual) pudiéndose
+    utilizar, además de constantes, variables del tipo smallint, tinyint o int para indicar la magnitud del desplazamiento.
 
 # Cierre del cursor:
 
@@ -28,5 +49,9 @@ DEALLOCATE cursor;
 
 # @@FETCH_STATUS
 Es una variable interna que tomará el valor 0 si la lectura del registro ha sido correcta.
+
+# FETCH
+La instrucción FETCH permitirá recorrer los resultados del cursor. Las filas leídas podrán copiarse a variables utilizando la sentencia INTO.
+
 
 
