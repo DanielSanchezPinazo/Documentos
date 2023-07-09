@@ -135,6 +135,10 @@ SELECT * FROM persona WHERE UPPER(apellido) LIKE = 'SANC'; -- Transforma el valo
 SELECT * FROM tarea WHERE fecha_fin IS NULL;
 SELECT * FROM tarea WHERE fecha_fin IS NOT NULL;
 
+-- ISNULL (Función que setea por defeto una campo que sea NULL)
+SELECT [ProductID], ISNULL([Color], 'Sin color'), [Name]
+FROM [Production].[Product]
+
 -- IN (para buscar más de una cadena en un campo)
 SELECT * FROM persona WHERE apellido IN('Sanchez', 'Gonzalez');
 SELECT * FROM persona WHERE telefono IN(689624531, 648215625);
