@@ -16,7 +16,7 @@ también que sea:
 - Estática (DECLARE ProdInfo CURSOR STATIC FOR SELECT...) la actualización (tanto como las inserciones y eliminaciones de registros) externa serán ignorada
     hasta que el cursor sea reabierto.
 - Keyset (DECLARE ProdInfo CURSOR KEYSET FOR SELECT...) permitirá al cursor detectar las actualizaciones y eliminaciones, pero no registros insertados.
-- FAST_FORWARD (DECLARE ProdInfo CURSOR FAST_FORWARD FOR SELECT...) creará un cursor de solo avance y solo lectura.
+- FAST_FORWARD (DECLARE ProdInfo CURSOR FAST_FORWARD FOR SELECT...) creará un cursor de solo avance y solo lectura (READ_ONLY y FORWARD_ONLY).
 
 Para que todas estas opciones de desplazamiento se encuentren disponibles el cursor deberá definirse como SCROLL, que es la opción por defecto, por lo que
 no es necesario definirlo explícitamente. Pero también puede definirse el cursor como FORWARD_ONLY, que sólo permitirá efectuar operaciones FETCH NEXT, pero
@@ -52,16 +52,21 @@ Es una variable interna que tomará el valor 0 si la lectura del registro ha sid
 
 # FETCH
 La instrucción FETCH permitirá recorrer los resultados del cursor. Las filas leídas podrán copiarse a variables utilizando la sentencia INTO.
-
-DECLARE @Description AS nvarchar(400)
-DECLARE ProdInfo CURSOR FOR SELECT [Description] FROM Production.ProductDescription
-OPEN ProdInfo
-FETCH NEXT FROM ProdInfo INTO @Description
-WHILE @@fetch_status = 0
-BEGIN
-    PRINT @Description
-    FETCH NEXT FROM ProdInfo INTO @Description
-END
-CLOSE ProdInfo
-DEALLOCATE ProdInfo
+                
+                DECLARE @Description AS nvarchar(400)
+                DECLARE @ProductDescriptionID AS int
+                DECLARE ProdInfo CURSOR FORWARD_ONLY FOR SELECT [Description],  
+                                                                [ProductDescriptionID]
+                                                         FROM Production.ProductDescription
+                OPEN ProdInfo
+                FETCH NEXT FROM ProdInfo INTO @Description, @ProductDescriptionID
+                WHILE @@fetch_status = 0
+                BEGIN
+                    UPDATE Production.ProductDescription
+                    SET [Description] = '!' + [Description]
+                    WHERE CURRENT OF ProdInfo ( Esto es lo mismo que: WHERE [ProductDescriptionID] = @ProductDescriptionID)
+                    FETCH NEXT FROM ProdInfo INTO @Description, @ProductDescriptionID
+                END
+                CLOSE ProdInfo
+                DEALLOCATE ProdInfo
 
