@@ -52,7 +52,9 @@ Es una variable interna que tomará el valor 0 si la lectura del registro ha sid
 
 # FETCH
 La instrucción FETCH permitirá recorrer los resultados del cursor. Las filas leídas podrán copiarse a variables utilizando la sentencia INTO.
-                
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
                 DECLARE @Description AS nvarchar(400)
                 DECLARE @ProductDescriptionID AS int
                 DECLARE ProdInfo CURSOR FORWARD_ONLY FOR SELECT [Description],  
