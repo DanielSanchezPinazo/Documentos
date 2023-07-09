@@ -71,7 +71,7 @@ SELECT COUNT(*) AS total FROM persona;
 SELECT COUNT(*) AS total FROM persona WHERE apellido = 'Sanchez';
 
 -- CONCAT
-SELECT *, concat(nombre, apellido) AS nombre_completo
+SELECT *, CONCAT(nombre, apellido) AS nombre_completo
 FROM persona;
 
 -- CAST, ::
