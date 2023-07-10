@@ -1,0 +1,133 @@
+GIT INIT
+Creará un nuevo repositorio GIT en local (En la ruta en la que nosencontremos en el momento de ejecutarlo)
+        git init
+        git init [nombre del proyecto]
+
+GIT CLONE
+
+Se usa para copiar un repositorio. 
+
+- si está en un servidor (GitHubb,...) se usa:
+        git clone https://github.com/Call-for-Code/Project-Sample.git (la ruta específica del proyecto)
+- si está en local:
+        git clone /path/to/repository
+
+GIT REMOTE
+
+Te permite ver todos los repositorios remotos.
+- El siguiente comando listará todas las conexiones junto con sus URLs:
+        git remote -v
+- Para conectar el repositorio local a un servidor remoto, usa este comando:
+        git remote add origin <host-or-remoteURL>
+- Por otro lado, el siguiente comando borrará una conexión a un repositorio remoto especificado:
+        git remote <nombre-del-repositorio>
+
+GIT BRANCH
+
+Se usa para listar, crear o borrar ramas. 
+- Por ejemplo, si quieres listar todaslas ramas presentes en el repositorio, el comando debería verse así:
+        git branch
+- Si quieres borrar una rama, usa:
+        git branch -d <branch-name>
+- Si quieres crear una rama, usa:
+        git branch <branch-name>
+
+GIT CHECKOUT
+
+Crea ramas y te ayuda a navegar entre ellas.
+- Por ejemplo, el siguiente comando crea una nueva y automáticamente se cambia a ella:
+        git checkout -b <branch-name>
+- Para cambiar de una rama a otra,sólo usa:
+        git checkout <branch-name>
+
+GIT PULL
+
+Fusiona todos los cambios que se han hecho en la rama del repositorioremoto con la rama del directorio de trabajo local en la que nos encontramos.
+        git pull
+Comando útil cuando otro desarrollador ha realizado cambios en la misma rama en la que se está trabajando de manera local y esta última tiene commits también.
+Toma como base la rama en un punto antes de los cambios del otro desarrollador y de los realizados localmente, luego pone encima los commits del otro desarrollador
+y luego los hechos en local:
+        git pull --rebase origin <branch-name>
+
+GIT STATUS
+
+Muestra la lista de los archivos que se han cambiado junto con los archivos que están por ser preparados o confirmados:
+        git status
+
+GIT ADD
+
+Se usa para agregar archivos nuevos o modificados al área de preparación para la posterior creación del commit.
+        git add <temp.txt>
+
+GIT COMMIT
+
+Creará una instantánea de los cambios añadidos al área de preparación y la guardará en el directorio git.
+        git commit –m “Mensaje descriptivo de los cambios que contiene el commit”
+Se usa para enviar commits locales a la rama del repositorio remoto.
+        git push origin <origin-branch>
+
+GIT DIFF
+
+Se usa para hacer una lista de conflictos. Para ver los conflictos que hay entre ramas antes de fusionarlas:
+        git diff <source-branch> <target-branch>
+Para ver una lista de todos los conflictos presentes usa:
+        git diff
+
+GIT MERGE
+
+Se usa para fusionar una rama con otra rama activa:
+        git merge <target-branch-name>
+
+GIT TAG
+
+Marca commits específicos. Los desarrolladores lo usan para marcar puntos de lanzamiento como v1.0 y v2.0.
+        git tag 1.1.0 <instert-commitID-here>
+
+GIT LOG
+
+Se usa para ver el historial del repositorio listando ciertos detalles de la confirmación:
+        git log
+
+GIT STASH
+
+Guardará momentaneamente los cambios que no están listos para ser confirmados. De esta manera puedes vovler al proyecto más tarde:
+        git stash
+Para recuperar los cambios guardados en un stash y aplicarlos en la rama en la que nos encontramos:
+        git stash pop
+Puedes visualizar un resumen de un stash mediante el comando:
+        git stash show
+De forma predeterminada, git stash pop volverá a aplicar el último stash creado: 
+        stash@{0}.
+Puedes elegir el stash que deseas volver a aplicar poniendo su identificador como último argumento, por ejemplo:
+        git stash pop stash@{2}
+
+GIT FETCH
+
+Descarga commits, archivos y referencias de un repositorio remoto a tu repositorio local. Esta acción la llevas a cabo cuando quieres ver en qué han
+estado trabajando los demás:
+        git fetch origin
+
+GIT RESET
+
+Este comando se usa para deshacer acciones hechas con otros comandos, por ejemplo, al hacer git add, así:
+        git reset
+Si se han realizado cambios a uno o varios archivos y se desea remover los mismos se puede utilizar el siguiente comando, (este comando no borranada
+de los commits ya realizados):
+        git reset --hard
+También se usa para deshacer commits o para dejar el repositorio en una versión o rama especifica, solo se debe especificar la versión (tag
+configurado en el repositorio, básicamente es una referencia a un commit) o el hash del commit, ejemplo:
+        git reset <commit-id> --hard
+
+GIT CHERRY PICK
+
+Este comando se usa para elegir un commit de una rama y aplicarlo en otra. Supongamos que un commit se aplica accidentalmente en la rama equivocada.
+Puedes cambiar a la rama correcta y ejecutar cherry-pick en el commit para aplicarlo donde debería estar.
+        git cherry-pick <commit-id>
+
+
+
+
+
+
+
+
