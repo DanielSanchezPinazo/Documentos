@@ -63,8 +63,14 @@ GIT COMMIT
 
 Creará una instantánea de los cambios añadidos al área de preparación y la guardará en el directorio git.
         git commit –m “Mensaje descriptivo de los cambios que contiene el commit”
+
+GIT PUSH
+
 Se usa para enviar commits locales a la rama del repositorio remoto.
         git push origin <origin-branch>
+Este comando enviará los nuevos cambios confirmados al repositorio central. Cuando envías cambios al repositorio central, es posible que las actualizaciones
+enviadas anteriormente por otros desarrolladores contengan código que entra en conflicto con las actualizaciones que tú quieres enviar.
+Git mostrará un mensaje en el que se indica este problema. En esta situación, tendrá que ejecutarse el comando git pull en primer lugar.
 
 GIT DIFF
 
